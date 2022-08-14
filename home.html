@@ -15,5 +15,14 @@
             こんにちは
             こんばんは
         </p>
+        <div id="wrapper">
+          <canvas id="canvas" width="600" height="400"></canvas>
+        </div>
     </body>
+    <script type="text/javascript">
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.strokeRect(0,0,100,100);
+        ctx.fillRect(150,0,100,100);
+    </script>
 </html>
