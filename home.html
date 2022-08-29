@@ -20,7 +20,11 @@
     <script type="text/javascript">
         const canvas = document.getElementById('canvas');
         const ctx = canvas.getContext('2d');
+        ctx.beginPath();
         ctx.strokeRect(0,0,100,100);
         ctx.fillRect(150,0,100,100);
+        context.arc( 50, 50, 10, 0 * Math.PI / 180, 360 * Math.PI / 180, false ) ;
+        context.fillStyle = "rgba(255,0,0,0.8)" ;
+        context.fill() ;
     </script>
 </html>
