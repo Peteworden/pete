@@ -3,28 +3,29 @@ html {
 }
 
 h4 {
+    font-size: 25px;
     text-align: center;
-    margin: 5px 5px;
+    margin: 15px 15px;
 }
 
 table {
     text-align: center;
-    font-size: 16px;
+    font-size: 25px;
 }
 
 
 td input {
-    font-size: 20px;
-    width: 5rem;
-    height: 2rem;
+    font-size: 25px;
+    width: 100px;
+    height: 40px;
     text-align: center;
     padding: 0 0.5rem;
-    margin: 3px 5px;
+    margin: 8px 10px;
     text-align: right;
 }
 
 td div{
-    width: 4rem;
+    width: 120px;
     margin: auto 5px;
     text-align: right;
 }
