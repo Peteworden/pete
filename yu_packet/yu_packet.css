@@ -10,7 +10,7 @@ h4 {
 
 table {
     text-align: center;
-    font-size: 16px;
+    font-size: 10px;
 }
 
 
@@ -25,7 +25,7 @@ td input {
 }
 
 td div{
-    width: 10px;
+    width: 100px;
     margin: auto 5px;
     text-align: right;
 }
