@@ -1,0 +1,23 @@
+html {
+    background-color: rgba(172, 255, 47, 0.382);
+}
+
+table {
+    text-align: center;
+}
+
+
+td input {
+    width: 5rem;
+    height: 2rem;
+    text-align: center;
+    font-size: larger;
+    margin: 3px 5px;
+    text-align: right;
+}
+
+td div{
+    width: 5rem;
+    margin: auto 5px;
+    text-align: right;
+}
