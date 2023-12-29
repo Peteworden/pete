@@ -1,0 +1,39 @@
+<!--2023/12/28-->
+<html>
+    <head>
+        <title>ゆうパケット</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="tbr.css">
+    </head>
+    <body>
+        <h3> ゆうパケット </h3>
+        <table>
+            <tr>
+                <th></th>
+                <th>個数</th>
+                <th>料金</th>
+            </tr>
+            <tr>
+                <td class="title">1cm (152円)</td>
+                <td><input type="text" id="kosu1" onkeyup="inputCheck()"></td>
+                <td><div id="ryokin1"></div></td>
+            </tr>
+            <tr>
+                <td class="title">2cm (182円)</td>
+                <td><input type="text" onkeyup="inputCheck()"></td>
+                <td><div id="ryokin2"></div></td>
+            </tr>
+            <tr>
+                <td class="title">3cm (256円)</td>
+                <td><input type="text" onkeyup="inputCheck()"></td>
+                <td><div id="ryokin3"></div></td>
+            </tr>
+            <tr>
+                <td class="title">合計</td>
+                <td><label id="kosu_sum">0 個</label></td>
+                <td><div id="ryokin_sum">0 円</div></td>
+            </tr>
+        </table>
+        <script src="tbr.js"></script>
+</html>
