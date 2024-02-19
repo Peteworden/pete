@@ -43,11 +43,9 @@ let pre_x=1000000, pre_y=1000000, pre_t0=0, t0=date.getTime();
 canvas.addEventListener("touchstart", ontouchstart);
 canvas.addEventListener("mousedown", onmousedown);
 
-document.getElementById('disc').innerHTML = 'masaru';
 function ontouchstart(e) {
-    document.getElementById('disc').innerHTML = e.touches.length.toString();
     if (e.touches.length.toString() == '1' && Math.pow(e.touches[0].pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(e.touches[0].pageY-canvas.offsetTop-canvas.height/2+y, 2) < Math.pow(3*unit, 2)) {
-        e.preventdefault();
+        e.preventDefault();
         autoFrag = 0;
         canvas.addEventListener("touchmove", ontouchmove);
         canvas.addEventListener("touchend", ontouchend);
@@ -56,10 +54,11 @@ function ontouchstart(e) {
 
 function ontouchmove(e) {
     var touches = e.changedTouches;
-    for (let touch in touches) {
-        document.getElementById('disc').innerHTML = touch.pageX + ' ' + touch.pageY;
+    let touch, i
+    for (i=0; i<touches.length; i++) {
+        touch = touches[i];
         if (Math.pow(touch.pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(touch.pageY-canvas.offsetTop-canvas.height/2+y, 2) < Math.pow(5*unit, 2)) {
-            e.preventdefault();
+            e.preventDefault();
             date = new Date();
             pre_t0 = t0;
             t0 = date.getTime();
@@ -67,7 +66,6 @@ function ontouchmove(e) {
             pre_y = y;
             x = touch.pageX-canvas.offsetLeft-canvas.width/2;
             y = -(touch.pageY-canvas.offsetTop-canvas.height/2);
-            document.getElementById('disc').innerHTML = x + ' ' + y;
             setCanvas(x, y);
         }
     }
@@ -78,7 +76,6 @@ function ontouchend(e) {
     vx = (x - pre_x) * 1000 / 20;
     vy = (y - pre_y) * 1000 / 20;
     autoFrag = 1;
-    document.getElementById('disc').innerHTML = vx + ' ' + vy;
     canvas.removeEventListener("touchmove", ontouchmove);
     canvas.removeEventListener("touchend", ontouchend);
     movePlanet();
@@ -101,7 +98,6 @@ function onmousemove(e) {
     x = e.pageX-canvas.offsetLeft-canvas.width/2;
     y = -(e.pageY-canvas.offsetTop-canvas.height/2);
     setCanvas(x, y);
-    document.getElementById('disc').innerHTML = x + ' ' + y;
 }
 
 function onmouseup(e) {
@@ -111,7 +107,6 @@ function onmouseup(e) {
     autoFrag = 1;
     canvas.removeEventListener("mousemove", onmousemove);
     canvas.removeEventListener("mouseup", onmouseup);
-    document.getElementById('disc').innerHTML = (x - pre_x) + ' ' +(y - pre_y) + ' ' + (t0 - pre_t0) + ' ' + vx + ' ' + vy;
     movePlanet();
 }
 
