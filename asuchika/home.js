@@ -45,6 +45,7 @@ canvas.addEventListener("touchend", ontouchend);
 canvas.addEventListener("mousedown", onmousedown);
 canvas.addEventListener("mouseup", onmouseup);
 
+document.getElementById('disc').innerHTML = 'masaru';
 function ontouchstart(e) {
     document.getElementById('disc').innerHTML = e.touches.length.toString();
     if (e.touches.length.toString() == '1' && Math.pow(e.touches[0].pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(e.touches[0].pageY-canvas.offsetTop-canvas.height/2+y, 2) < Math.pow(3*unit, 2)) {
@@ -78,6 +79,7 @@ function ontouchend(e) {
     vx = (x - pre_x) * 1000 / 20;
     vy = (y - pre_y) * 1000 / 20;
     autoFrag = 1;
+    document.getElementById('disc').innerHTML = vx + ' ' + vy;
     canvas.removeEventListener("touchmove", ontouchmove);
     movePlanet();
 }
