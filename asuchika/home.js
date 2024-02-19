@@ -46,7 +46,8 @@ canvas.addEventListener("mousedown", onmousedown);
 canvas.addEventListener("mouseup", onmouseup);
 
 function ontouchstart(e) {
-    if (e.touches.length == 1 && Math.pow(e.touches[0].pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(e.touches[0].pageY-canvas.offsetTop-canvas.height/2+y, 2) < Math.pow(3*unit, 2)) {
+    document.getElementById('disc').innerHTML = e.touches.length.toString();
+    if (e.touches.length.toString() == '1' && Math.pow(e.touches[0].pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(e.touches[0].pageY-canvas.offsetTop-canvas.height/2+y, 2) < Math.pow(3*unit, 2)) {
         e.preventdefault();
         autoFrag = 0;
         canvas.addEventListener("ontouchmove", ontouchmove);
