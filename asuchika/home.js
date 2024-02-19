@@ -41,9 +41,7 @@ GM = x*vy*vy;
 
 let pre_x=1000000, pre_y=1000000, pre_t0=0, t0=date.getTime();
 canvas.addEventListener("touchstart", ontouchstart);
-canvas.addEventListener("touchend", ontouchend);
 canvas.addEventListener("mousedown", onmousedown);
-canvas.addEventListener("mouseup", onmouseup);
 
 document.getElementById('disc').innerHTML = 'masaru';
 function ontouchstart(e) {
@@ -51,7 +49,8 @@ function ontouchstart(e) {
     if (e.touches.length.toString() == '1' && Math.pow(e.touches[0].pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(e.touches[0].pageY-canvas.offsetTop-canvas.height/2+y, 2) < Math.pow(3*unit, 2)) {
         e.preventdefault();
         autoFrag = 0;
-        canvas.addEventListener("ontouchmove", ontouchmove);
+        canvas.addEventListener("touchmove", ontouchmove);
+        canvas.addEventListener("touchend", ontouchend);
     }
 }
 
@@ -81,6 +80,7 @@ function ontouchend(e) {
     autoFrag = 1;
     document.getElementById('disc').innerHTML = vx + ' ' + vy;
     canvas.removeEventListener("touchmove", ontouchmove);
+    canvas.removeEventListener("touchend", ontouchend);
     movePlanet();
 }
 
@@ -88,6 +88,7 @@ function onmousedown(e){
     if (Math.pow(e.pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(e.pageY-canvas.offsetTop-canvas.height/2+y, 2) < 40*40) {
         autoFrag = 0;
         canvas.addEventListener("mousemove", onmousemove);
+        canvas.addEventListener("mouseup", onmouseup);
     }
 }
 
@@ -109,6 +110,7 @@ function onmouseup(e) {
     vy = (y - pre_y) * 1000 / 20;
     autoFrag = 1;
     canvas.removeEventListener("mousemove", onmousemove);
+    canvas.removeEventListener("mouseup", onmouseup);
     document.getElementById('disc').innerHTML = (x - pre_x) + ' ' +(y - pre_y) + ' ' + (t0 - pre_t0) + ' ' + vx + ' ' + vy;
     movePlanet();
 }
