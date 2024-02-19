@@ -5,10 +5,13 @@ let ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+if (canvas.height > canvas.width) {
+    canvas.height = canvas.width;
+}
 
 let date = new Date();
 
-let unit = Math.min(canvas.width, canvas.height) / 60;
+let unit = canvas.width / 80;
 
 function setCanvas(x, y) {
     let ctx = canvas.getContext('2d');
@@ -55,13 +58,13 @@ function ontouchmove(e) {
     for (let touch in e.changedTouches) {
         if (Math.pow(touch.pageX-canvas.offsetLeft-canvas.width/2-x, 2) + Math.pow(touch.pageY-canvas.offsetTop-canvas.height/2+y, 2) < 40*40) {
             e.preventdefault();
-            pre_x = x;
-            pre_y = y;
-            x = e.pageX-canvas.offsetLeft-canvas.width/2;
-            y = -(e.pageY-canvas.offsetTop-canvas.height/2);
-            setCanvas(x, y);
             date = new Date();
             t0 = date.getTime();
+            pre_x = x;
+            pre_y = y;
+            x = touch.pageX-canvas.offsetLeft-canvas.width/2;
+            y = -(touch.pageY-canvas.offsetTop-canvas.height/2);
+            setCanvas(x, y);
         }
     }
 }
@@ -96,7 +99,6 @@ function onmouseup(e) {
     date = new Date();
     vx = (x - pre_x) * 1000 / (date.getTime() - t0);
     vy = (y - pre_y) * 1000 / (date.getTime() - t0);
-    console.log(date.getTime() - t0);
     autoFrag = 1;
     canvas.removeEventListener("mousemove", onmousemove);
     movePlanet();
