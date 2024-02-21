@@ -101,7 +101,7 @@ function ontouchend(e) {
     } else {
         ecc = 100;
     }
-    
+
     if (ecc == 0) {
         a = r;
     } else {
@@ -159,7 +159,7 @@ function onmouseup(e) {
     } else {
         ecc = 100;
     }
-    
+
     if (ecc == 0) {
         a = r;
     } else {
@@ -179,14 +179,28 @@ function onmouseup(e) {
     movePlanet();
 }
 
+function eom(x, y, vx, vy) {
+    let x1, y1, vx1, vy1;
+    x1 = vx;
+    y1 = vy;
+    vx1 = -GM * x / Math.pow(x*x + y*y, 1.5);
+    vy1 = -GM * y / Math.pow(x*x + y*y, 1.5);
+    return [x1 * dt, y1 * dt, vx1 * dt, vy1 * dt];
+}
+
 function movePlanet() {
+    let k1 = [], k2 = [], k3 = [], k4 = [];
     date = new Date();
     dt = (date.getTime() - t0) / 1000;
     t0 = date.getTime();
-    vx += -GM * x / Math.pow(x*x + y*y, 1.5) * dt;
-    vy += -GM * y / Math.pow(x*x + y*y, 1.5) * dt;
-    x  += vx * dt;
-    y  += vy * dt;
+    k1 = eom(x, y, vx, vy);
+    k2 = eom(x + k1[0] / 2, y + k1[1] / 2, vx + k1[2] / 2, vy + k1[3] / 2);
+    k3 = eom(x + k2[0] / 2, y + k2[1] / 2, vx + k2[2] / 2, vy + k2[3] / 2);
+    k4 = eom(x + k3[0], y + k3[1], vx + k3[2], vy + k3[3]);
+    x += (k1[0] + 2 * k2[0] + 2 * k3[0] + k4[0]) / 6;
+    y += (k1[1] + 2 * k2[1] + 2 * k3[1] + k4[1]) / 6;
+    vx += (k1[2] + 2 * k2[2] + 2 * k3[2] + k4[2]) / 6;
+    vy += (k1[3] + 2 * k2[3] + 2 * k3[3] + k4[3]) / 6;
     if (Math.abs(x) > canvas.width/2 || Math.abs(y) > canvas.height/2) {
         restart();
     }
