@@ -11,13 +11,15 @@ if (canvas.height > canvas.width) {
 
 let date = new Date();
 
-let unit = canvas.width / 80;
+let unit = Math.min(canvas.width, canvas.height) / 80;
+
+var a=0, ecc=0, theta0=0, rot=1;
 
 function setCanvas(x, y) {
-    let ctx = canvas.getContext('2d');
     ctx.clearRect(0,0,canvas.width,canvas.height);
     ctx.fillStyle = '#002';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.arc(canvas.width/2, canvas.height/2, unit, 0, 2 * pi, false);
@@ -28,18 +30,27 @@ function setCanvas(x, y) {
     ctx.fill();
 }
 
-let x, y, vx, vy, GM, dt, autoFrag=1;
+
+let x, y, r, vx, vy, v, theta=0, GM, dt, autoFrag=1;
 function restart() {
     x = 20 * unit;
     y = 0;
+    r = Math.sqrt(x*x+y*y);
     vx = 0;
     vy = 2*pi*x/15;
+    v = Math.sqrt(vx*vx+vy*vy);
+    theta = 0;
+    a = x;
+    ecc = 0;
+    theta0 = 0;
+    rot = 1;
     autoFrag = 1;
 }
 restart();
-GM = x*vy*vy;
+GM = r*v*v;
 
-let pre_x=1000000, pre_y=1000000, pre_t0=0, t0=date.getTime();
+let pre_x=0, pre_y=0, pre_t0=0, t0=date.getTime();
+
 canvas.addEventListener("touchstart", ontouchstart);
 canvas.addEventListener("mousedown", onmousedown);
 
@@ -105,6 +116,35 @@ function onmouseup(e) {
     vx = (x - pre_x) * 1000 / 20;
     vy = (y - pre_y) * 1000 / 20;
     autoFrag = 1;
+    r = Math.sqrt(x*x + y*y);
+    v = Math.sqrt(vx*vx + vy*vy);
+
+    if (r <= 0 || v <= 0) {
+        theta = 0;
+    } else {
+        theta = Math.acos((x*vx+y*vy)/r/v);
+    }
+
+    if (1 + r*v*v/GM * (r*v*v/GM - 2) * Math.pow(Math.sin(theta), 2) >= 0) {
+        ecc = Math.sqrt(1 + r*v*v/GM * (r*v*v/GM - 2) * Math.pow(Math.sin(theta), 2));
+    } else {
+        ecc = 100;
+    }
+    
+    if (ecc == 0) {
+        a = r;
+    } else {
+        a = Math.pow(r*v*Math.sin(theta), 2) / ecc / GM;
+    }
+
+    rot = Math.sign(x * vy - y * vx); //反時計回りが1、時計回りが-1
+
+    if (x*vx+y*vy>0) {
+        theta0 = Math.atan2(y, x) - rot * Math.acos(a/r - 1/ecc);
+    } else {
+        theta0 = Math.atan2(y, x) + rot * Math.acos(a/r - 1/ecc);
+    }
+
     canvas.removeEventListener("mousemove", onmousemove);
     canvas.removeEventListener("mouseup", onmouseup);
     movePlanet();
@@ -122,11 +162,31 @@ function movePlanet() {
         restart();
     }
     setCanvas(x, y);
+    drawOrbit();
     if (autoFrag) {
         window.requestAnimationFrame(movePlanet);
     }
 }
 
 window.requestAnimationFrame(movePlanet);
+
+function drawOrbit() {
+    var ang, dist;
+    ctx.fillStyle = 'white';
+    ctx.beginPath();
+    for (var t=0; t<100; t++) {
+        ang = theta0 + rot * 2 * pi * t / 100;
+        if (ecc == 0) {
+            dist = a;
+        } else {
+            dist = a * ecc / (1 + ecc * Math.cos(2*pi*t/100));
+        }
+        if (dist > 0) {
+            ctx.beginPath();
+            ctx.arc(canvas.width/2+dist*Math.cos(ang), canvas.height/2-dist*Math.sin(ang), 1, 0, 2*pi, false);
+            ctx.fill();
+        }
+    }
+}
 
 document.body.appendChild(canvas);
