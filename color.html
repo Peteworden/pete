@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>光であそぼ。</title>
+  </head>
+  <body>
+    #<input type="text" id="txt">
+    <button id="btn" onclick="clr()">Go</button>
+    例：FFF, 123, 0g0, 34dd77
+    <script>
+        function clr() {
+            document.body.style.backgroundColor = `#${txt.value}`;
+        }
+    </script>
+  </body>
+</html>
