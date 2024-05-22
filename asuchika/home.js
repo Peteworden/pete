@@ -3,8 +3,8 @@ const pi = Math.PI;
 let canvas = document.createElement('canvas');
 let ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = window.innerWidth - 30;
+canvas.height = window.innerHeight - 30;
 if (canvas.height > canvas.width) {
     canvas.height = canvas.width;
 }

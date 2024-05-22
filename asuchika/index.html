@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang = "ja">
+  <head>
+    <title>あすちか　ホーム</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" nonce="f995dbb5c9ed47528971ee58740" src="//local.adguard.org?ts=1698529438160&amp;type=content-script&amp;dmn=peteworden.github.io&amp;url=https%3A%2F%2Fpeteworden.github.io%2FSoleil%2FPeteHOME.html&amp;app=com.android.chrome&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=0"></script>
+    <link rel="stylesheet" href="stylemain.css">
+  </head>
+  
+  <body>
+    <!-- ヘッダー -->
+    <header>
+      <h4>天文アウトリーチ学生団体　あすちか</h4>
+      <nav>
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="aboutus.html">About us</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <main>
+      <div class="topimgdiv">
+        <img src="images/1.jpg" alt="集合写真、屋島にて">
+        <div class="topimgtextdiv">
+          <h3>京都大学発　天文アウトリーチ学生団体
+          </h3>
+          <h2>あすちか</h2>
+        </div>
+      </div>
+
+      <div class="bodymaindiv">
+      
+      <h3>あすちか とは・・・</h3>
+      <p>私たち「あすちか」は、「天文（アストロノミー）をもっと身近に！」をテーマに、京都大学理学部の学生を中心として
+        2023年度から活動しているアウトリーチ団体です。
+        Twitterは<a href="https://twitter.com/asuchika_" style="text-decoration: none; color: blue;">@asuchika_</a>です。
+      </p>
+
+      <div class="news">
+        <h3>NEWS</h3>
+        <table border="0" width="1000">
+          <tr>
+            <td width="12%">2024/4/2～4</td>
+            <td>京大構内で開催された紅萠祭でビラを配りました
+            </td>
+          </tr>
+          <tr>
+            <td>2024/1/15</td>
+            <td>京都府の田原小学校・宇治田原小学校で天文教室を開催しました</td>
+          </tr>
+          <tr>
+            <td>2023/12/8</td>
+            <td>香川県の田中小学校で天文教室を開催しました</td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="canvas1">
+        <h3>ケプラーゲーム</h3>
+        <p>青い地球を指やタッチペン、マウスで投げて太陽の周りを回るようにしてみよう！けっこう難しいよ</p>
+        <button class="restartBtn" type="button" onclick="restart()">地球が消えたりしたらココ</button>
+        <div id="orbitInfo"></div>
+        <div id="positionInfo"></div>
+        <canvas id="canvas" width="0" height="0"></canvas>
+      <script src="home.js"></script>
+      </div>
+
+      </div>
+    </main>
+    
+    <!-- フッター -->
+    <footer>
+      皆様からの寄付をお待ちしております。
+    </footer>
+  </body>
+</html>
