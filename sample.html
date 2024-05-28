@@ -20,19 +20,31 @@
     </style>
 </head>
 <body>
-    <div id="orientation">向き: </div>
+    <div id="ori">abc</div>
+
     <script>
-        function updateOrientation() {
-            const orientationElement = document.getElementById('orientation');
-            const angle = screen.orientation.angle;
-            orientationElement.textContent = `向き: ${angle}度`;
+      window.addEventListener("load",function(){
+        getOrientation();
+        screen.orientation.onchange=function(){
+          getOrientation();;
         }
-
-        // 初期化
-        updateOrientation();
-
-        // イベントリスナーを追加して向きが変わるたびに更新
-        screen.orientation.addEventListener('change', updateOrientation);
+      });
+      function getOrientation(){
+        let type=screen.orientation.type;
+        let ori="";
+        if(type=="portrait-primary"){
+          ori="縦向き(上部が上)";
+        }else if(type=="portrait-secondary"){
+          ori="縦向き(上部が下)";
+        }else if(type=="landscape-primary"){
+          ori="横向き(上部が左)";
+        }else if(type=="landscape-secondary"){
+          ori="横向き(上部が右)";
+        }
+        document.getElementById("ori").innerHTML=
+          ori+" "+screen.orientation.angle+"度<br>" + ", " + type;//+
+              //"<img src='./imgs/"+type+".png'>";
+      }
     </script>
 </body>
 </html>
