@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screen Orientation Example</title>
+    <title>Device Orientation Example</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,36 +15,27 @@
         }
 
         #orientation {
-            font-size: 2em;
+            font-size: 1.5em;
         }
     </style>
 </head>
 <body>
-    <div id="ori">abc</div>
-
+    <div id="orientation">傾き情報を待っています...</div>
     <script>
-      window.addEventListener("load",function(){
-        getOrientation();
-        screen.orientation.onchange=function(){
-          getOrientation();;
+        if (window.DeviceOrientationEvent) {
+            window.addEventListener('deviceorientation', function(event) {
+                const alpha = event.alpha; // Z軸回りの回転角
+                const beta = event.beta;   // X軸回りの回転角
+                const gamma = event.gamma; // Y軸回りの回転角
+
+                document.getElementById('orientation').textContent =
+                    `アルファ: ${alpha.toFixed(2)}°\n` +
+                    `ベータ: ${beta.toFixed(2)}°\n` +
+                    `ガンマ: ${gamma.toFixed(2)}°`;
+            });
+        } else {
+            document.getElementById('orientation').textContent = 'DeviceOrientation APIはサポートされていません。';
         }
-      });
-      function getOrientation(){
-        let type=screen.orientation.type;
-        let ori="";
-        if(type=="portrait-primary"){
-          ori="縦向き(上部が上)";
-        }else if(type=="portrait-secondary"){
-          ori="縦向き(上部が下)";
-        }else if(type=="landscape-primary"){
-          ori="横向き(上部が左)";
-        }else if(type=="landscape-secondary"){
-          ori="横向き(上部が右)";
-        }
-        document.getElementById("ori").innerHTML=
-          ori+" "+screen.orientation.angle+"度<br>" + ", " + type;//+
-              //"<img src='./imgs/"+type+".png'>";
-      }
     </script>
 </body>
 </html>
