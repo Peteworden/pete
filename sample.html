@@ -1,5 +1,38 @@
-<html>
-    <body>
-        <div id="ori"></div>
-    </body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Orientation Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #orientation {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div id="orientation">向き: </div>
+    <script>
+        function updateOrientation() {
+            const orientationElement = document.getElementById('orientation');
+            const angle = screen.orientation.angle;
+            orientationElement.textContent = `向き: ${angle}度`;
+        }
+
+        // 初期化
+        updateOrientation();
+
+        // イベントリスナーを追加して向きが変わるたびに更新
+        screen.orientation.addEventListener('change', updateOrientation);
+    </script>
+</body>
 </html>
