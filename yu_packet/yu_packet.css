@@ -1,3 +1,7 @@
+*{
+    box-sizing:border-box;
+}
+
 html {
     background-color: rgba(172, 255, 47, 0.382);
 }
@@ -16,14 +20,30 @@ table {
 td input {
     font-size: larger;
     height: 35px;
-    text-align: center;
     padding: 0 0.5rem;
     margin: 5px 8px;
     text-align: right;
 }
 
 td div{
+    width: 50%;
     margin: auto 5px;
     text-align: right;
     font-size: larger;
+}
+
+table {
+    width: 100%;
+}
+th:nth-child(1), td:nth-child(1) {
+    width: 30%;
+}
+th:nth-child(2), td:nth-child(2) {
+    width: 20%;
+}
+th:nth-child(3), td:nth-child(3) {
+    width: 50%;
+}
+input {
+    width: 100%;  /* 入力フィールドをセルの幅に合わせる */
 }
