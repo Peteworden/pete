@@ -26,8 +26,6 @@ td input {
 }
 
 td div{
-    width: 50%;
-    margin: auto 5px;
     text-align: right;
     font-size: larger;
 }
@@ -45,5 +43,8 @@ th:nth-child(3), td:nth-child(3) {
     width: 50%;
 }
 input {
-    width: 100%;  /* 入力フィールドをセルの幅に合わせる */
+    width: 90%;  /* 入力フィールドをセルの幅に合わせる */
+}
+td div {
+    margin: auto 20px;
 }
