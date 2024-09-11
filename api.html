@@ -1,42 +1,46 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Asteroid 2015ab Data</title>
-</head>
-<body>
-    <h1>Asteroid 2015ab Orbital Elements</h1>
-    <div id="asteroid-data"></div>
+<!Doctype html>
+<html>
+  <head>
+    <title>Camera Test</title>
+    <script type="text/javascript">
 
-    <script>
-        // APIエンドポイントのURL
-        const apiUrl = 'https://ssd-api.jpl.nasa.gov/sbdb.api?sstr=27791'
 
-        // fetch関数を使ってAPIを呼び出す
-        fetch(apiUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                return response.json(); // レスポンスをJSON形式に変換
-            })
-            .then(data => {
-                // 取得したデータをHTMLに表示
-                const dataDiv = document.getElementById('asteroid-data');
-                dataDiv.innerHTML = `
-                    <p><strong>Object Name:</strong> ${data.object.fullname}</p>
-                    <p><strong>SPK-ID:</strong> ${data.object.spkid}</p>
-                    <p><strong>Orbit Class:</strong> ${data.orbit.class ? data.orbit.class.name : 'N/A'}</p>
-                    <p><strong>Semi-major Axis (a):</strong> ${data.orbit.elements.a} AU</p>
-                    <p><strong>Eccentricity (e):</strong> ${data.orbit.elements.e}</p>
-                    <p><strong>Inclination (i):</strong> ${data.orbit.elements.i} degrees</p>
-                `;
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-                document.getElementById('asteroid-data').textContent = 'Failed to load data.';
-            });
+      function videoStart(){
+        var constraints = { audio: false, video: { facingMode: "environment" } };
+
+        navigator.mediaDevices.getUserMedia( constraints )
+        .then(
+          function( stream ) {
+            var video = document.querySelector( 'video' );
+            video.srcObject = stream;
+            video.onloadedmetadata = function( e ) {
+              video.play();
+            };
+          }
+        )
+      };
+
+
+      function videoStop(){
+        var constraints = { audio: false, video: { facingMode: "environment" } };
+
+        navigator.mediaDevices.getUserMedia( constraints )
+        .then(
+          function( stream ) {
+            var video = document.querySelector( 'video' );
+            video.srcObject = stream;
+            video.onloadedmetadata = function( e ) {
+              stream.getVideoTracks()[0].stop();
+            };
+          }
+        )
+      };
+
     </script>
-</body>
+  </head>
+  <body>
+    <div><video id="myVideo" autoplay="1" ></video></div> 
+    <div><button type="button" onclick="videoStart()">撮影</button>　
+    <button type="button" onclick="videoStop()">停止</button></div>
+  </body>
 </html>
