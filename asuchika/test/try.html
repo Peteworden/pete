@@ -6,31 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" nonce="f995dbb5c9ed47528971ee58740" src="//local.adguard.org?ts=1698529438160&amp;type=content-script&amp;dmn=peteworden.github.io&amp;url=https%3A%2F%2Fpeteworden.github.io%2FSoleil%2FPeteHOME.html&amp;app=com.android.chrome&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=0"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/destyle.css@4.0.1/destyle.min.css">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="stylemain.css">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   </head>
   
   <body>
     <!-- ヘッダー -->
     <header>
-      <div class="header_asuchika">
-        <h4>天文アウトリーチ学生団体　あすちか</h4>
+      <div class="header__logo">あすちか</div>
+      <div class="header__menu" id="menu-toggle">
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
+          <span class="menu-bar"></span>
       </div>
-      
-      <nav class="header__nav">
-        <ul class="header__ul">
-          <li>
-            <div class="header__item">
-              <a href="try.html">ホーム</a>
-            </div>
-          </li>
-        </ul>
-      </nav>
     </header>
     
     <main>
       <div class="background__overlay"></div>
+
+      <div class="top-img-wrapper">
+        <img src="images/1.jpg" alt="集合写真、屋島にて">
+        <div class="top-img-text">
+          <h3>あすちかHP</h3>
+          <h2>25/02/09</h2>
+        </div>
+      </div>
+
+      <div class="motto-wrapper">
+        s
+      </div>
 
       <div class="slideshow__container">
         <div class="slideshow__earth">
@@ -62,7 +68,6 @@
           </div>
         </div>
       </div>
-
       <div class="moon-container">
         <div class="moon-image">
           <img src="images/moon.png" alt="">
@@ -88,56 +93,42 @@
           </div>
         </div>
       </div>
-      
 
-      <!--<div class="top-img-wrapper">
-        <img src="images/1.jpg" alt="集合写真、屋島にて">
-        <div class="top-img-text">
-          <h3>京都大学発　天文アウトリーチ学生団体</h3>
-          <h2>だよ</h2>
-        </div>
-      </div>-->
-      
-
-      <!--<div class="home-introduction">
-        <p>
-          私たち「あすちか」は、<br>
-          <span style="font-size: 20px; background: linear-gradient(transparent 50%, #a8eeaf 50%);">「天文（アストロノミー）をもっと身近に！」</span><br>
-          をテーマに活動している天文アウトリーチ団体です。<br>
-          京都と香川を中心に、主に小学生を対象として<br>
-          天文教室などを行っています。
-        </p>
-      </div>
-
-      <div class="news">
-        <div class="news-title">
-          <h3>NEWS</h3>
+      <section class="info">
+        <div class="info-container">
+          <div class="info-title">NEWS</div>
+          <div class="info-content">
+            <table border="0" width="1000">
+              <tr>
+                <td width="12%">2024/4/2～4</td>
+                <td>京大構内で開催された紅萠祭でビラを配りました
+                </td>
+              </tr>
+              <tr>
+                <td>2024/1/15</td>
+                <td>京都府の田原小学校・宇治田原小学校で天文教室を開催しました</td>
+              </tr>
+              <tr>
+                <td>2023/12/8</td>
+                <td>香川県の田中小学校で天文教室を開催しました</td>
+              </tr>
+            </table>
+          </div>
         </div>
 
-        <div class="news-content">
-          <table border="0" width="1000">
-            <tr>
-              <td width="12%">2024/4/2～4</td>
-              <td>京大構内で開催された紅萠祭でビラを配りました
-              </td>
-            </tr>
-            <tr>
-              <td>2024/1/15</td>
-              <td>京都府の田原小学校・宇治田原小学校で天文教室を開催しました</td>
-            </tr>
-            <tr>
-              <td>2023/12/8</td>
-              <td>香川県の田中小学校で天文教室を開催しました</td>
-            </tr>
-          </table>
+        <div class="info-container">
+          <div class="info-title">今後の活動予定</div>
+          <div class="info-content">
+            <table border="0" width="1000">
+              <tr>
+                <td width="12%">2025/1/1</td>
+                <td>なんかします
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
-      </div>
-    -->
-
-      <div class="pagesdiv">
-      </div>
-    
-
+      </section>
     </main>
     
     <!-- フッター -->
