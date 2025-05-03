@@ -1,5 +1,6 @@
 {
   "name": "oscilloscope",
+  "homepage": "https://peteworden.github.io/pete",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +8,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "deploy:preview": "gh-pages -d dist -r https://peteworden.github.io/pete"
   },
   "dependencies": {
     "react": "^19.0.0",
