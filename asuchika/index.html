@@ -1,78 +1,194 @@
 <!DOCTYPE html>
-<html lang = "ja">
-  <head>
-    <title>あすちか　ホーム</title>
+<html lang="ja">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" nonce="f995dbb5c9ed47528971ee58740" src="//local.adguard.org?ts=1698529438160&amp;type=content-script&amp;dmn=peteworden.github.io&amp;url=https%3A%2F%2Fpeteworden.github.io%2FSoleil%2FPeteHOME.html&amp;app=com.android.chrome&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=0"></script>
-    <link rel="stylesheet" href="stylemain.css">
-  </head>
-  
-  <body>
-    <!-- ヘッダー -->
+    <title>あすちか</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
     <header>
-      <h4>天文アウトリーチ学生団体　あすちか</h4>
-      <nav>
-        <ul>
-          <li><a href="index.html">ホーム</a></li>
-          <li><a href="aboutus.html">About us</a></li>
-        </ul>
-      </nav>
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="index.html" class="logo-link">あすちか</a>
+            </div>
+            <nav class="header-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">ホーム</a></li>
+                    <li><a href="#" class="nav-link">活動内容</a></li>
+                    <li><a href="#" class="nav-link">メンバー紹介</a></li>
+                    <li><a href="#" class="nav-link">活動実績</a></li>
+                    <li><a href="#" class="nav-link">お問い合わせ</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
     
     <main>
-      <div class="topimgdiv">
-        <img src="images/1.jpg" alt="集合写真、屋島にて">
-        <div class="topimgtextdiv">
-          <h3>京都大学発　天文アウトリーチ学生団体
-          </h3>
-          <h2>あすちか</h2>
+        <div class="hero">
+            <h1 class="title">あすちか</h1>
+            <p class="catchphrase">アストロノミーをみぢかに</p>
         </div>
-      </div>
-
-      <div class="bodymaindiv">
-      
-      <h3>あすちか とは・・・</h3>
-      <p>私たち「あすちか」は、「天文（アストロノミー）をもっと身近に！」をテーマに、京都大学理学部の学生を中心として
-        2023年度から活動しているアウトリーチ団体です。
-        Twitterは<a href="https://twitter.com/asuchika_" style="text-decoration: none; color: blue;">@asuchika_</a>です。
-      </p>
-
-      <div class="news">
-        <h3>NEWS</h3>
-        <table border="0" width="1000">
-          <tr>
-            <td width="12%">2024/4/2～4</td>
-            <td>京大構内で開催された紅萠祭でビラを配りました
-            </td>
-          </tr>
-          <tr>
-            <td>2024/1/15</td>
-            <td>京都府の田原小学校・宇治田原小学校で天文教室を開催しました</td>
-          </tr>
-          <tr>
-            <td>2023/12/8</td>
-            <td>香川県の田中小学校で天文教室を開催しました</td>
-          </tr>
-        </table>
-      </div>
-      
-      <div class="canvas1">
-        <h3>ケプラーゲーム</h3>
-        <p>青い地球を指やタッチペン、マウスで投げて太陽の周りを回るようにしてみよう！けっこう難しいよ</p>
-        <button class="restartBtn" type="button" onclick="restart()">地球が消えたりしたらココ</button>
-        <div id="orbitInfo"></div>
-        <div id="positionInfo"></div>
-        <canvas id="canvas" width="0" height="0"></canvas>
-      <script src="home.js"></script>
-      </div>
-
-      </div>
+        
+        <!-- 活動写真セクション -->
+        <section class="photo-gallery">
+            <!-- <h2 class="section-title">活動写真</h2> -->
+            <div class="photo-container">
+                <button class="arrow-btn arrow-left" id="prevBtn" aria-label="前の写真">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <div class="earth-circle">
+                    <div class="photo-wrapper">
+                        <img id="photoImage" src="images/1.jpg" alt="活動写真">
+                    </div>
+                </div>
+                
+                <button class="arrow-btn arrow-right" id="nextBtn" aria-label="次の写真">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <!-- 紹介文セクション -->
+        <section class="about-section">
+            <div class="about-ellipse">
+                <p class="about-text">
+                    あすちかは、京都大学をはじめとした大学生による<br>
+                    天文アウトリーチ学生団体です。より多くの方に<br>
+                    アストロノミー（天文学）を身近に感じていただけるよう、<br>
+                    様々な活動を行っています。
+                </p>
+            </div>
+        </section>
+        
+        <!-- ニュースセクション -->
+        <section class="news-section">
+            <div class="news-container">
+                <div class="news-label">NEWS</div>
+                <div class="news-item">
+                    <div class="news-date">2025年10月12日</div>
+                    <div class="news-content">千葉市科学フェスタに出展しました。</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025年9月14日</div>
+                    <div class="news-content">ワークショップを開催しました。</div>
+                </div>
+                <div class="news-item">
+                    <div class="news-date">2025年4月20日</div>
+                    <div class="news-content">メンバー募集を開始しました</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 詳しい説明・代表挨拶セクション -->
+        <section class="detail-section">
+            <div class="moon-background">
+                <div class="moon-grid">
+                    <!-- 1行目左：クレーター風図形の中に集合写真 -->
+                    <div class="moon-cell crater-photo">
+                        <div class="crater-shape">
+                            <img src="images/1.jpg" alt="あすちかメンバー集合写真" class="group-photo">
+                        </div>
+                    </div>
+                    
+                    <!-- 1行目右：あすちかの説明 -->
+                    <div class="moon-cell description">
+                        <div class="description-content">
+                            <p>あすちかは、京都大学をはじめとした大学生による天文アウトリーチ学生団体です。</p>
+                            <p>私たちは、より多くの方にアストロノミー（天文学）を身近に感じていただけるよう、様々な活動を行っています。</p>
+                            <p>学校やイベントでの出張授業、観望会、ワークショップなどを通じて、宇宙の魅力を伝えています。</p>
+                            <p>子どもたちの「なぜ？」「どうして？」という好奇心に応え、科学的な思考を育むお手伝いをしています。</p>
+                            <p>一緒に宇宙の神秘を探求してみませんか？</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2行目左：代表挨拶 -->
+                    <div class="moon-cell greeting">
+                        <div class="greeting-content">
+                            <h3 class="greeting-title">代表挨拶</h3>
+                            <p>あすちかへようこそ。私たちは、天文学の魅力を多くの方に伝えたいという想いから活動を始めました。</p>
+                            <p>観望会やワークショップを通じて、実際に星を見たり、実験をしたりすることで、天文学をより身近に感じていただけるよう心がけています。</p>
+                            <p>皆様との出会いを大切にし、一緒に宇宙の世界を楽しんでいきたいと思います。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 2行目右：代表の写真 -->
+                    <div class="moon-cell leader-photo">
+                        <div class="photo-frame">
+                            <img src="images/ogswr.jpg" alt="代表写真" class="leader-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 円形カードセクション -->
+        <section class="circle-cards-section">
+            <div class="circle-card card-1">
+                <h3 class="circle-card-title">活動理念</h3>
+                <p class="circle-card-text">アストロノミーをみぢかに</p>
+            </div>
+            <div class="circle-card card-2">
+                <h3 class="circle-card-title">活動実績</h3>
+                <p class="circle-card-text">これまでに10の学校・施設で<br>100人にアウトリーチ活動をしました</p>
+            </div>
+            <div class="circle-card card-3">
+                <h3 class="circle-card-title">メンバー募集</h3>
+                <p class="circle-card-text">興味がある大学生の<br>見学お待ちしています</p>
+            </div>
+        </section>
+        
+        <!-- 協賛者セクション -->
+        <section class="sponsors-section">
+            <div class="sponsors-container">
+                <h2 class="sponsors-title">協賛いただいている皆様（仮です）</h2>
+                <div class="sponsors-list">
+                    <span class="sponsor-item">株式会社 宇宙科学研究所</span>
+                    <span class="sponsor-item">京都大学 理学研究科</span>
+                    <span class="sponsor-item">一般社団法人 天文教育普及協会</span>
+                    <span class="sponsor-item">株式会社 星空プロジェクト</span>
+                    <span class="sponsor-item">NPO法人 宇宙教育ネットワーク</span>
+                </div>
+                <p class="sponsors-thanks">ありがとうございます</p>
+            </div>
+        </section>
     </main>
     
     <!-- フッター -->
-    <footer>
-      皆様からの寄付をお待ちしております。
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <h3 class="footer-section-title">ページ</h3>
+                <ul class="footer-link-list">
+                    <li><a href="#" class="footer-link">活動内容</a></li>
+                    <li><a href="#" class="footer-link">メンバー紹介</a></li>
+                    <li><a href="#" class="footer-link">活動実績</a></li>
+                    <li><a href="#" class="footer-link">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3 class="footer-section-title">お問い合わせ</h3>
+                <p class="footer-email">
+                    <a href="mailto:contact@asuchika.example.com" class="footer-link">contact@asuchika.example.com</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-org-name">天文アウトリーチ学生団体　あすちか</p>
+        </div>
     </footer>
-  </body>
+    
+    <script src="script.js"></script>
+</body>
 </html>
+
